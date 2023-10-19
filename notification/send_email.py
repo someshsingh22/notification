@@ -7,10 +7,10 @@ def send_email(subject, body, recipient_email):
     sender_email = os.environ.get("EMAIL_USERNAME")
     sender_password = os.environ.get("EMAIL_PASSWORD")
     yag = yagmail.SMTP(sender_email, sender_password)
-    logging.info("SMTP connection established.")
+    print("SMTP connection established.")
     yag.send(to=recipient_email, subject=subject, contents=body)
     yag.close()
-    logging.info("Email sent successfully!")
+    print("Email sent successfully!")
 
 
 def main():
@@ -28,7 +28,7 @@ def main():
     assert args.body is not None, "Body not provided"
     
     if args.recipient_email is None:
-        logging.info(
+        print(
             "No recipient email provided. Using sender email as recipient email."
         )
         send_email(args.subject, args.body, os.environ.get("EMAIL_USERNAME"))
