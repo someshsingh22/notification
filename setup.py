@@ -9,7 +9,7 @@ setup(
         'charset-normalizer',
         'idna',
         'requests',
-        'smtplib',
+        'secure-smtplib',
         'urllib3',
     ],
     entry_points={
