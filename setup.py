@@ -14,7 +14,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "send_email_gmail=notification.send_email_gmail:main",
+            "send_email=notification.send_email:main",
         ],
     },
 )

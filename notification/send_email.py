@@ -36,6 +36,7 @@ def send_email(subject, body, recipient_email):
 
     print("Email sent successfully.")
 
+
 def main():
     import argparse
 
@@ -51,14 +52,17 @@ def main():
     args = parser.parse_args()
 
     # Extract arguments and call the send_email function
-    
+
     # Check if recipient email is provided
     if args.recipient_email is None:
-        print("Warning: Recipient email address not provided. Using default email address.")
+        print(
+            "Warning: Recipient email address not provided. Using default email address."
+        )
         target = "singhksomesh@gmail.com"
     else:
-        target = args.recipient_email    
+        target = args.recipient_email
     send_email(args.subject, args.body, target)
+
 
 if __name__ == "__main__":
     main()
