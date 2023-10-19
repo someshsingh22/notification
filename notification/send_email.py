@@ -17,10 +17,16 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description="Send an email using yagmail.")
-    parser.add_argument("subject", type=str, help="Subject of the email", required=True)
-    parser.add_argument("body", type=str, help="Body of the email", required=True)
+    parser.add_argument("subject", type=str, help="Subject of the email")
+    parser.add_argument("body", type=str, help="Body of the email")
     parser.add_argument("recipient_email", type=str, help="Recipient email address")
     args = parser.parse_args()
+    
+    assert os.environ.get("EMAIL_USERNAME") is not None, "EMAIL_USERNAME not set"
+    assert os.environ.get("EMAIL_PASSWORD") is not None, "EMAIL_PASSWORD not set"
+    assert args.subject is not None, "Subject not provided"
+    assert args.body is not None, "Body not provided"
+    
     if args.recipient_email is None:
         logging.info(
             "No recipient email provided. Using sender email as recipient email."
