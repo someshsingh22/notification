@@ -14,10 +14,6 @@ def send_email(subject, body, recipient_email):
         print("Error: Email credentials not provided.")
         exit(1)
 
-    # Set a default recipient email address if not provided
-    if recipient_email is None:
-        recipient_email = "singhksomesh@gmail.com"
-
     # Set up the MIME
     message = MIMEMultipart()
     message["From"] = sender_email
@@ -40,8 +36,7 @@ def send_email(subject, body, recipient_email):
 
     print("Email sent successfully.")
 
-
-if __name__ == "__main__":
+def main():
     import argparse
 
     # Initialize argparse
@@ -56,4 +51,14 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Extract arguments and call the send_email function
-    send_email(args.subject, args.body, args.recipient_email)
+    
+    # Check if recipient email is provided
+    if args.recipient_email is None:
+        print("Warning: Recipient email address not provided. Using default email address.")
+        target = "singhksomesh@gmail.com"
+    else:
+        target = args.recipient_email    
+    send_email(args.subject, args.body, target)
+
+if __name__ == "__main__":
+    main()
