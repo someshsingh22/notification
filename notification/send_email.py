@@ -19,7 +19,7 @@ def main():
     parser = argparse.ArgumentParser(description="Send an email using yagmail.")
     parser.add_argument("subject", type=str, help="Subject of the email")
     parser.add_argument("body", type=str, help="Body of the email")
-    parser.add_argument("recipient_email", type=str, help="Recipient email address")
+    parser.add_argument("recipient_email", type=str, help="Recipient email address", default="singhksomesh@gmail.com")
     args = parser.parse_args()
     
     assert os.environ.get("EMAIL_USERNAME") is not None, "EMAIL_USERNAME not set"
